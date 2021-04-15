@@ -1,6 +1,8 @@
 import icons from 'url:../../img/icons.svg';
 import View from './View.js';
 import { API_URL, RES_PER_PAGE } from '../config.js';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime'
 
 class PaginationView extends View {
     _parentElement = document.querySelector('.pagination');

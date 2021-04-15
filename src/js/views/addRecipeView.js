@@ -1,20 +1,22 @@
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 import View from './View.js';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime'
 
 class addRecipeView extends View {
-    _parentElement = document.querySelector('.upload');
-    _window = document.querySelector('.add-recipe-window');
-    _overlay = document.querySelector('.overlay');
-    _btnOpen = document.querySelector('.nav__btn--add-recipe');
-    _btnClose = document.querySelector('.btn--close-modal');
-    constructor() {
-        super();
-        this.addHandlerShowFrom();
-        this.addHandlerHideFrom();
-    }
-    renderForm() {
-        const markup = `
+  _parentElement = document.querySelector('.upload');
+  _window = document.querySelector('.add-recipe-window');
+  _overlay = document.querySelector('.overlay');
+  _btnOpen = document.querySelector('.nav__btn--add-recipe');
+  _btnClose = document.querySelector('.btn--close-modal');
+  constructor() {
+    super();
+    this.addHandlerShowFrom();
+    this.addHandlerHideFrom();
+  }
+  renderForm() {
+    const markup = `
         <div class="upload__column">
           <h3 class="upload__heading">Recipe data</h3>
           <label>Title</label>
@@ -82,43 +84,43 @@ class addRecipeView extends View {
           <span>Upload</span>
         </button>
         `
-        setTimeout(() => {
-            this._parentElement.innerHTML = '';
-            this._parentElement.insertAdjacentHTML('afterbegin', markup);
-        }, 500);
+    setTimeout(() => {
+      this._parentElement.innerHTML = '';
+      this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }, 500);
 
-    }
+  }
 
-    _toggleRecipeView() {
-        this._window.classList.toggle('hidden');
-        this._overlay.classList.toggle('hidden');
-    }
+  _toggleRecipeView() {
+    this._window.classList.toggle('hidden');
+    this._overlay.classList.toggle('hidden');
+  }
 
-    addHandlerShowFrom() {
-        this._btnOpen.addEventListener('click', this._toggleRecipeView.bind(this));
-    }
-    addHandlerHideFrom() {
-        this._btnClose.addEventListener('click', this._toggleRecipeView.bind(this));
-        this._overlay.addEventListener('click', this._toggleRecipeView.bind(this));
-    }
-    addHandlerUpload(handler) {
-        this._parentElement.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const dataArr = [...new FormData(this)];
-            // console.log('dataArr: ', dataArr);
-            const data = Object.fromEntries(dataArr)
-            handler(data);
-        })
-    }
+  addHandlerShowFrom() {
+    this._btnOpen.addEventListener('click', this._toggleRecipeView.bind(this));
+  }
+  addHandlerHideFrom() {
+    this._btnClose.addEventListener('click', this._toggleRecipeView.bind(this));
+    this._overlay.addEventListener('click', this._toggleRecipeView.bind(this));
+  }
+  addHandlerUpload(handler) {
+    this._parentElement.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const dataArr = [...new FormData(this)];
+      // console.log('dataArr: ', dataArr);
+      const data = Object.fromEntries(dataArr)
+      handler(data);
+    })
+  }
 
 
-    addHandlerBookmark(handler) {
-        this._parentElement.addEventListener('click', function (e) {
-            const bookBtn = e.target.closest('.btn--bookmark');
-            if (!bookBtn) return;
-            handler();
-        });
-    }
+  addHandlerBookmark(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const bookBtn = e.target.closest('.btn--bookmark');
+      if (!bookBtn) return;
+      handler();
+    });
+  }
 
 
 }

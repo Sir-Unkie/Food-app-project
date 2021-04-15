@@ -1,5 +1,7 @@
 import icons from 'url:../../img/icons.svg';
 import View from './View.js';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime'
 
 class ResultsView extends View {
     _parentElement = document.querySelector('.results');
