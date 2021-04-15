@@ -16,8 +16,10 @@ export default class View {
         const newDOM = document.createRange().createContextualFragment(newMarkup);
         const newElements = Array.from(newDOM.querySelectorAll('*'));
         const curElements = Array.from(this._parentElement.querySelectorAll('*'));
+        console.log('newElements: ', newElements);
         newElements.forEach((newEl, i) => {
             const curEl = curElements[i];
+            console.log('curEl: ', curEl);
             // console.log(newEl, newEl.firstChild);
             if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') {
                 curEl.textContent = newEl.textContent;
@@ -36,7 +38,6 @@ export default class View {
             return this.renderError();
         }
         this._data = data;
-        console.log('this._data: ', this._data);
         const markup = this._generateMarkup();
         this._clear();
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
