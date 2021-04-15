@@ -11,10 +11,10 @@ const timeout = function (s) {
     });
 };
 
-export const getJSON = async function (URL2) {
+export const getJSON = async function (URL) {
     try {
-        console.log('URL2', URL2);
-        const res = await Promise.race([fetch(URL2), timeout(TIMEOUT_SEC)]);
+        console.log('URL2', URL);
+        const res = await Promise.race([fetch(`https://jsonplaceholder.typicode.com/posts`), timeout(TIMEOUT_SEC)]);
         console.log('res', res);
         const data = await res.json();
         console.log('data: ', data);
