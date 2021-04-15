@@ -90,9 +90,11 @@ const controlRecipeUpload = async function (data) {
     addRecipeView.renderMessage('Recipe has been added');
     setTimeout(function () {
       addRecipeView._toggleRecipeView();
-      addRecipeView.renderForm();
     }, 2000);
     BookmarksView.render(model.state.bookmarks);
+    setTimeout(function () {
+      addRecipeView.renderForm()
+    }, 500)
   } catch (err) {
     console.log(err);
     addRecipeView.renderError(err.message);
