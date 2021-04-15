@@ -58,6 +58,7 @@ const controlSearchResults = async function (query) {
     // WITHOUT PAGINATION resultsView.render(model.state.search.results);
     // with pagination
     resultsView.render(model.getSearchResultsPage());
+    console.log('asdasdasd');
     paginationView.render(model.state.search);
     console.log(model.state.recipe);
 
