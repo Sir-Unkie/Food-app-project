@@ -108,6 +108,6 @@ const init = function () {
   recipeView.addHandlerBookmark(controlBookmark);
   addRecipeView.addHandlerUpload(controlRecipeUpload);
 }
-
+// asdasd
 
 init();
